@@ -1,6 +1,6 @@
 export const LinkedList = (...values) => {
-  let _head;
-  let _tail;
+  let _head = Node();
+  let _tail = _head;
   const append = () => {};
   const prepend = () => {};
   const size = () => {};
