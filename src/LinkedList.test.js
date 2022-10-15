@@ -124,7 +124,26 @@ describe("prepend tests", () => {
     expect(tail).toEqual(expTail);
   });
 });
-it.skip("size Tests", () => {});
+describe("size Tests", () => {
+  it("works with null head", () => {
+    expect(list.size()).toEqual(1);
+  });
+  it("works with one node", () => {
+    list.append(4);
+    expect(list.size()).toEqual(1);
+  });
+  it("works with two nodes", () => {
+    list.append(3);
+    list.append(4);
+    expect(list.size()).toEqual(2);
+  });
+  it("works with three nodes", () => {
+    list.append(3);
+    list.append(4);
+    list.append(3);
+    expect(list.size()).toEqual(3);
+  });
+});
 it("head Tests", () => {
   expect(list.head().value).toEqual(null);
   expect(list.head().nextNode).toEqual(null);
