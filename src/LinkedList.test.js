@@ -292,4 +292,23 @@ describe("find Tests", () => {
     expect(list.find(6)).toBe(null);
   });
 });
-it.skip("toString Tests", () => {});
+describe("toString Tests", () => {
+  it("works for null head", () => {
+    expect(list.toString()).toEqual("null");
+  });
+  it("works for one node", () => {
+    list.append(3);
+    expect(list.toString()).toEqual("( 3 ) -> null");
+  });
+  it("works for two nodes", () => {
+    list.append(3);
+    list.append(3);
+    expect(list.toString()).toEqual("( 3 ) -> ( 3 ) -> null");
+  });
+  it("works for three nodes", () => {
+    list.append(2);
+    list.append(4);
+    list.append(1);
+    expect(list.toString()).toEqual("( 2 ) -> ( 4 ) -> ( 1 ) -> null");
+  });
+});

@@ -87,7 +87,19 @@ export const LinkedList = (...values) => {
     return foundIndex;
   };
 
-  const toString = () => {};
+  const toString = () => {
+    const isHeadNull = _head.value === null && _head.nextNode === null;
+    if (isHeadNull) return "null";
+
+    let result = "";
+    const formatNodeValue = ({ node }) => {
+      result += `( ${node.value} ) -> `;
+    };
+    _traverseList(formatNodeValue);
+    result += "null";
+
+    return result;
+  };
 
   function _traverseList(cb) {
     let index = 0;
