@@ -75,7 +75,18 @@ export const LinkedList = (...values) => {
     return hasValue;
   };
 
-  const find = () => {};
+  const find = (pValue) => {
+    let foundIndex = null;
+    const checkNodeValue = ({ node, index }) => {
+      if (node.value === pValue) {
+        foundIndex = index;
+        return;
+      }
+    };
+    _traverseList(checkNodeValue);
+    return foundIndex;
+  };
+
   const toString = () => {};
 
   function _traverseList(cb) {

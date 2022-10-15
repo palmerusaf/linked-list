@@ -270,5 +270,26 @@ describe("contains Tests", () => {
     expect(list.contains(6)).toBe(false);
   });
 });
-it.skip("find Tests", () => {});
+describe("find Tests", () => {
+  it("returns index if value found", () => {
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    const index1 = 0;
+    const index2 = 1;
+    const index3 = 2;
+    expect(list.find(2)).toBe(index1);
+    expect(list.find(3)).toBe(index2);
+    expect(list.find(4)).toBe(index3);
+  });
+  it("returns null if value not found", () => {
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    expect(list.find(6)).toBe(null);
+  });
+  it("returns null if null head", () => {
+    expect(list.find(6)).toBe(null);
+  });
+});
 it.skip("toString Tests", () => {});
