@@ -13,7 +13,16 @@ export const LinkedList = (...values) => {
     _tail = _tail.nextNode;
   };
 
-  const prepend = () => {};
+  const prepend = (pValue) => {
+    const newNode = Node(pValue);
+    if (_head.value === null && _head.nextNode === null) {
+      _head = newNode;
+      _tail = _head;
+      return;
+    }
+    const newHead = Node(pValue, _head);
+    _head = newHead;
+  };
   const size = () => {};
   const head = () => _head;
   const tail = () => _tail;
