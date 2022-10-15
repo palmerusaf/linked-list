@@ -186,7 +186,73 @@ describe("at Tests", () => {
     expect(list.at(0)).toEqual(result1);
   });
 });
-it.skip("pop Tests", () => {});
+describe("pop Tests", () => {
+  it("works once", () => {
+    list.append(1);
+    list.append(4);
+    list.append(3);
+    list.append(2);
+    list.pop();
+    const head = list.head();
+    const tail = list.tail();
+
+    const expTail = { value: 3, nextNode: null };
+    const expHead = { value: 1, nextNode: { value: 4, nextNode: expTail } };
+
+    expect(head).toEqual(expHead);
+    expect(tail).toEqual(expTail);
+  });
+  it("works twice", () => {
+    list.append(1);
+    list.append(4);
+    list.append(3);
+    list.append(2);
+    list.pop();
+    list.pop();
+    const head = list.head();
+    const tail = list.tail();
+
+    const expTail = { value: 4, nextNode: null };
+    const expHead = { value: 1, nextNode: expTail };
+
+    expect(head).toEqual(expHead);
+    expect(tail).toEqual(expTail);
+  });
+  it("pop till head", () => {
+    list.append(1);
+    list.append(4);
+    list.append(3);
+    list.append(2);
+    list.pop();
+    list.pop();
+    list.pop();
+    const head = list.head();
+    const tail = list.tail();
+
+    const expTail = { value: 1, nextNode: null };
+    const expHead = expTail;
+
+    expect(head).toEqual(expHead);
+    expect(tail).toEqual(expTail);
+  });
+  it("pop everything results in null head", () => {
+    list.append(4);
+    list.pop();
+    const expHead = { value: null, nextNode: null };
+    const expTail = expHead;
+    expect(list.head()).toEqual(expHead);
+    expect(list.tail()).toEqual(expTail);
+  });
+  it("pops on null list do nothing", () => {
+    list.append(4);
+    list.pop();
+    list.pop();
+    const expHead = { value: null, nextNode: null };
+    const expTail = expHead;
+    expect(list.head()).toEqual(expHead);
+    expect(list.tail()).toEqual(expTail);
+  });
+});
 it.skip("contains Tests", () => {});
 it.skip("find Tests", () => {});
 it.skip("toString Tests", () => {});

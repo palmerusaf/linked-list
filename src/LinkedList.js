@@ -42,7 +42,22 @@ export const LinkedList = (...values) => {
     _traverseList(setNodeAtIndex);
     return nodeResult;
   };
-  const pop = () => {};
+  const pop = () => {
+    const isHeadNull = _head.value === null && _head.nextNode === null;
+    if (isHeadNull) return;
+
+    const isSingleNode = _head.value !== null && _head.nextNode === null;
+    if (isSingleNode) {
+      _head.value = null;
+      _tail = _head;
+      return;
+    }
+
+    const indexBeforeTail = size() - 2;
+    const nodeBeforeTail = at(indexBeforeTail);
+    _tail = nodeBeforeTail;
+    _tail.nextNode = null;
+  };
   const contains = () => {};
   const find = () => {};
   const toString = () => {};
