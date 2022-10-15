@@ -152,7 +152,40 @@ it("tail Tests", () => {
   expect(list.tail().value).toEqual(null);
   expect(list.tail().nextNode).toEqual(null);
 });
-it.skip("at Tests", () => {});
+describe("at Tests", () => {
+  it("returns null if invalid index", () => {
+    expect(list.at(1)).toEqual(null);
+    expect(list.at(-1)).toEqual(null);
+  });
+  it("works with null head", () => {
+    const result = { value: null, nextNode: null };
+    expect(list.at(0)).toEqual(result);
+  });
+  it("works with one node", () => {
+    list.append(4);
+    const result = { value: 4, nextNode: null };
+    expect(list.at(0)).toEqual(result);
+  });
+  it("works with two nodes", () => {
+    list.append(4);
+    list.append(5);
+    const result2 = { value: 5, nextNode: null };
+    const result1 = { value: 4, nextNode: result2 };
+    expect(list.at(1)).toEqual(result2);
+    expect(list.at(0)).toEqual(result1);
+  });
+  it("works with three nodes", () => {
+    list.append(2);
+    list.append(4);
+    list.append(5);
+    const result3 = { value: 5, nextNode: null };
+    const result2 = { value: 4, nextNode: result3 };
+    const result1 = { value: 2, nextNode: result2 };
+    expect(list.at(2)).toEqual(result3);
+    expect(list.at(1)).toEqual(result2);
+    expect(list.at(0)).toEqual(result1);
+  });
+});
 it.skip("pop Tests", () => {});
 it.skip("contains Tests", () => {});
 it.skip("find Tests", () => {});
