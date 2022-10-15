@@ -253,6 +253,22 @@ describe("pop Tests", () => {
     expect(list.tail()).toEqual(expTail);
   });
 });
-it.skip("contains Tests", () => {});
+describe("contains Tests", () => {
+  it("returns true if value found", () => {
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    expect(list.contains(2)).toBe(true);
+  });
+  it("returns false if value not found", () => {
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    expect(list.contains(6)).toBe(false);
+  });
+  it("returns false if null head", () => {
+    expect(list.contains(6)).toBe(false);
+  });
+});
 it.skip("find Tests", () => {});
 it.skip("toString Tests", () => {});

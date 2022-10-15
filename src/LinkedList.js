@@ -37,11 +37,15 @@ export const LinkedList = (...values) => {
   const at = (pIndex) => {
     let nodeResult = null;
     const setNodeAtIndex = ({ node, index }) => {
-      if (index === pIndex) nodeResult = node;
+      if (index === pIndex) {
+        nodeResult = node;
+        return;
+      }
     };
     _traverseList(setNodeAtIndex);
     return nodeResult;
   };
+
   const pop = () => {
     const isHeadNull = _head.value === null && _head.nextNode === null;
     if (isHeadNull) return;
@@ -58,7 +62,19 @@ export const LinkedList = (...values) => {
     _tail = nodeBeforeTail;
     _tail.nextNode = null;
   };
-  const contains = () => {};
+
+  const contains = (pValue) => {
+    let hasValue = false;
+    const checkForValue = ({ node }) => {
+      if (node.value === pValue) {
+        hasValue = true;
+        return;
+      }
+    };
+    _traverseList(checkForValue);
+    return hasValue;
+  };
+
   const find = () => {};
   const toString = () => {};
 
