@@ -17,13 +17,7 @@
 If you want to see the tests in action run the following commands:
 ```bash
 git clone https://github.com/palmerusaf/linked-list.git
-```
-```bash
 cd ./linked-list
-```
-```bash
 npm i
-```
-```bash
 npm test
 ```
