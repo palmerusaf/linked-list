@@ -1,7 +1,18 @@
 export const LinkedList = (...values) => {
   let _head = Node();
   let _tail = _head;
-  const append = () => {};
+
+  const append = (pValue) => {
+    const newNode = Node(pValue);
+    if (_head.value === null && _head.nextNode === null) {
+      _head = newNode;
+      _tail = _head;
+      return;
+    }
+    _tail.nextNode = newNode;
+    _tail = _tail.nextNode;
+  };
+
   const prepend = () => {};
   const size = () => {};
   const head = () => _head;
